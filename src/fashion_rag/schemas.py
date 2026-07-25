@@ -68,12 +68,12 @@ class FAQEntry(StrictModel):
 
 
 class ProductFilters(StrictModel):
-    gender: list[Gender] | None = None
-    master_category: list[MasterCategory] | None = None
-    article_type: list[ArticleType] | None = None
-    base_colour: list[BaseColour] | None = None
-    usage: list[Usage] | None = None
-    season: list[Season] | None = None
+    gender: list[Gender] | None = Field(default=None, min_length=1)
+    master_category: list[MasterCategory] | None = Field(default=None, min_length=1)
+    article_type: list[ArticleType] | None = Field(default=None, min_length=1)
+    base_colour: list[BaseColour] | None = Field(default=None, min_length=1)
+    usage: list[Usage] | None = Field(default=None, min_length=1)
+    season: list[Season] | None = Field(default=None, min_length=1)
     min_price: StrictFloat | None = Field(default=None, ge=0)
     max_price: StrictFloat | None = Field(default=None, ge=0)
 
