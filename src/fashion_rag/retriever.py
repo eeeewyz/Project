@@ -6,7 +6,7 @@ import faiss
 import numpy as np
 from sentence_transformers import SentenceTransformer
 
-from fashion_rag.schemas import Product, ProductFilters, RetrievalHit
+from fashion_rag.schemas import FAQEntry, Product, ProductFilters, RetrievalHit
 
 SOFT_FILTER_ORDER = ("usage", "season", "base_colour", "gender")
 
@@ -157,5 +157,54 @@ class ProductRetriever:
                 local_positions[0],
                 strict=True,
             )
+            if position >= 0
+        ]
+
+
+class FAQRetriever:
+    """Retrieve FAQ records by cosine similarity while preserving FAQ evidence."""
+
+    def __init__(self, faqs: list[FAQEntry], embedder: Embedder):
+        self.faqs = [faq.model_copy(deep=True) for faq in faqs]
+        faq_ids = [faq.faq_id for faq in self.faqs]
+        duplicates = sorted(
+            faq_id for faq_id in set(faq_ids) if faq_ids.count(faq_id) > 1
+        )
+        if duplicates:
+            raise ValueError(f"duplicate faq_id: {duplicates[0]}")
+        if not self.faqs:
+            raise ValueError("faqs must not be empty")
+
+        self.embedder = embedder
+        self.embeddings = _normalized_embeddings(
+            embedder.encode([faq.search_text for faq in self.faqs]),
+            expected_rows=len(self.faqs),
+        )
+        self.index = faiss.IndexFlatIP(self.embeddings.shape[1])
+        self.index.add(self.embeddings)
+
+    def search(self, query: str, top_k: int = 3) -> list[RetrievalHit]:
+        if not isinstance(top_k, int) or isinstance(top_k, bool) or top_k <= 0:
+            raise ValueError("top_k must be greater than zero")
+
+        query_vector = _normalized_embeddings(
+            self.embedder.encode([query]),
+            expected_rows=1,
+        )
+        if query_vector.shape[1] != self.embeddings.shape[1]:
+            raise ValueError("query embedding dimension does not match FAQ index")
+
+        scores, positions = self.index.search(
+            query_vector,
+            min(top_k, len(self.faqs)),
+        )
+        return [
+            RetrievalHit(
+                record_id=self.faqs[position].faq_id,
+                text=self.faqs[position].search_text,
+                score=float(score),
+                metadata=self.faqs[position].model_dump(),
+            )
+            for score, position in zip(scores[0], positions[0], strict=True)
             if position >= 0
         ]
