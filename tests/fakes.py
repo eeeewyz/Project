@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from collections.abc import Iterable
 
+import numpy as np
+
 
 class FakeLLM:
     """A deterministic LLM fake that records prompts without using a network."""
@@ -16,3 +18,23 @@ class FakeLLM:
         if isinstance(result, Exception):
             raise result
         return result
+
+
+class FakeEmbedder:
+    """Deterministic, offline embeddings for retrieval tests."""
+
+    def encode(self, texts: list[str]) -> np.ndarray:
+        vectors = []
+        for text in texts:
+            lowered = text.lower()
+            vectors.append(
+                [
+                    float("blue" in lowered),
+                    float("t-shirt" in lowered),
+                    float("dress" in lowered),
+                    float("return" in lowered),
+                ]
+            )
+        array = np.asarray(vectors, dtype="float32")
+        norms = np.linalg.norm(array, axis=1, keepdims=True)
+        return array / np.maximum(norms, 1e-12)
