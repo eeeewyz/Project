@@ -1,0 +1,74 @@
+[
+  {
+    "faq_id": "FAQ-01",
+    "question": "How do I return an item?",
+    "answer": "Start a return within 30 days of delivery using your order page.",
+    "topic": "returns"
+  },
+  {
+    "faq_id": "FAQ-02",
+    "question": "When will I receive my refund?",
+    "answer": "Approved refunds are issued to the original payment method within 5-10 business days.",
+    "topic": "returns"
+  },
+  {
+    "faq_id": "FAQ-03",
+    "question": "Can I exchange a size?",
+    "answer": "You can request one size exchange within 30 days while stock is available.",
+    "topic": "returns"
+  },
+  {
+    "faq_id": "FAQ-04",
+    "question": "How long does standard shipping take?",
+    "answer": "Standard shipping normally takes 3-5 business days.",
+    "topic": "shipping"
+  },
+  {
+    "faq_id": "FAQ-05",
+    "question": "Do you offer express shipping?",
+    "answer": "Express shipping is available at checkout for eligible destinations.",
+    "topic": "shipping"
+  },
+  {
+    "faq_id": "FAQ-06",
+    "question": "Can I track my order?",
+    "answer": "A tracking link is emailed after the order leaves the warehouse.",
+    "topic": "shipping"
+  },
+  {
+    "faq_id": "FAQ-07",
+    "question": "How can I contact support?",
+    "answer": "Support is available through the website contact form from Monday to Friday.",
+    "topic": "support"
+  },
+  {
+    "faq_id": "FAQ-08",
+    "question": "What are support hours?",
+    "answer": "Support operates Monday to Friday, 9:00-18:00 JST.",
+    "topic": "support"
+  },
+  {
+    "faq_id": "FAQ-09",
+    "question": "Can I cancel an order?",
+    "answer": "Orders can be cancelled before warehouse processing begins.",
+    "topic": "orders"
+  },
+  {
+    "faq_id": "FAQ-10",
+    "question": "Which payment methods are accepted?",
+    "answer": "The demo store accepts major credit cards and digital wallets.",
+    "topic": "payments"
+  },
+  {
+    "faq_id": "FAQ-11",
+    "question": "How do I find my size?",
+    "answer": "Use the size guide linked on each product page.",
+    "topic": "sizing"
+  },
+  {
+    "faq_id": "FAQ-12",
+    "question": "Are sale items returnable?",
+    "answer": "Sale items follow the same 30-day policy unless marked final sale.",
+    "topic": "returns"
+  }
+]
