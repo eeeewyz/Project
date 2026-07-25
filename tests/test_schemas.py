@@ -25,6 +25,13 @@ def test_filters_reject_any_sentinel():
         ProductFilters(base_colour=["Any"])
 
 
+def test_filters_reject_empty_categorical_lists():
+    """Catch representing an absent categorical filter with an empty list."""
+
+    with pytest.raises(ValidationError):
+        ProductFilters(season=[])
+
+
 def test_filters_reject_unknown_catalogue_values():
     with pytest.raises(ValidationError):
         ProductFilters(article_type=["Hat"])
