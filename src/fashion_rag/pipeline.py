@@ -258,3 +258,70 @@ class FashionRAGPipeline:
         *,
         started_at: float,
     ) -> PipelineResponse:
+        product_query: ProductQuery = self.product_parser.parse(query, history)
+        hits = self.product_retriever.search(
+            query,
+            product_query.filters,
+            self.top_k,
+        )
+        applied_filters = _effective_filters(product_query.filters, hits)
+        if not hits:
+            return self._response(
+                started_at=started_at,
+                answer=NO_PRODUCT_MESSAGE,
+                route=Route.PRODUCT,
+                nature=product_query.nature,
+                applied_filters=applied_filters,
+            )
+        temperature = (
+            0.2
+            if product_query.nature is TaskNature.TECHNICAL
+            else 0.8
+        )
+        answer = self._generate_grounded(
+            build_product_answer_prompt(query, product_query, hits),
+            hits=hits,
+            route=Route.PRODUCT,
+            temperature=temperature,
+        )
+        return self._response(
+            started_at=started_at,
+            answer=answer,
+            route=Route.PRODUCT,
+            nature=product_query.nature,
+            applied_filters=applied_filters,
+            hits=hits,
+        )
+
+    def answer(
+        self,
+        query: str,
+        history: list[ChatTurn],
+    ) -> PipelineResponse:
+        """Return a bounded-history, grounded answer for one user query."""
+
+        started_at = time.perf_counter()
+        recent_history = bound_history(history, 4)
+        try:
+            route = self.router.route(query, recent_history)
+            if route is Route.UNSUPPORTED:
+                return self._response(
+                    started_at=started_at,
+                    answer=UNSUPPORTED_MESSAGE,
+                    route=route,
+                )
+            if route is Route.FAQ:
+                return self._answer_faq(query, started_at=started_at)
+            if route is Route.PRODUCT:
+                return self._answer_product(
+                    query,
+                    recent_history,
+                    started_at=started_at,
+                )
+            raise ApplicationError("The router returned an unsupported route.")
+        except ApplicationError:
+            raise
+        except Exception as exc:
+            raise ApplicationError(
+                "The assistant could not process the request."
+            ) from exc
