@@ -1,0 +1,374 @@
+[
+  {
+    "case_id": "F-01",
+    "query": "How do I return an item?",
+    "history": [],
+    "expected_route": "faq",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": ["FAQ-01"],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "F-02",
+    "query": "When will my refund arrive?",
+    "history": [],
+    "expected_route": "faq",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": ["FAQ-02"],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "F-03",
+    "query": "Can I exchange for another size?",
+    "history": [],
+    "expected_route": "faq",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": ["FAQ-03"],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "F-04",
+    "query": "How long does standard shipping take?",
+    "history": [],
+    "expected_route": "faq",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": ["FAQ-04"],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "F-05",
+    "query": "Where can I track my order?",
+    "history": [],
+    "expected_route": "faq",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": ["FAQ-06"],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "F-06",
+    "query": "How can I contact customer support?",
+    "history": [],
+    "expected_route": "faq",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": ["FAQ-07"],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "F-07",
+    "query": "What time is support available?",
+    "history": [],
+    "expected_route": "faq",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": ["FAQ-08"],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "F-08",
+    "query": "Which payment methods can I use?",
+    "history": [],
+    "expected_route": "faq",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": ["FAQ-10"],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "P-01",
+    "query": "Show me three blue T-shirts under $100.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["T-shirt"],
+      "base_colour": ["Blue"],
+      "max_price": 100
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": ["P0001", "P0002", "P0003", "P0004", "P0005", "P0006"]
+  },
+  {
+    "case_id": "P-02",
+    "query": "Show white sneakers costing at least $50.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["Sneakers"],
+      "base_colour": ["White"],
+      "min_price": 50
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": ["P0068", "P0069", "P0070", "P0072"]
+  },
+  {
+    "case_id": "P-03",
+    "query": "Find black sneakers between $50 and $100.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["Sneakers"],
+      "base_colour": ["Black"],
+      "min_price": 50,
+      "max_price": 100
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": ["P0043", "P0044", "P0046", "P0048"]
+  },
+  {
+    "case_id": "P-04",
+    "query": "Show women's red dresses.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "gender": ["Women"],
+      "article_type": ["Dress"],
+      "base_colour": ["Red"]
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": ["P0081", "P0082"]
+  },
+  {
+    "case_id": "P-05",
+    "query": "I need a white shirt for a man.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "gender": ["Men"],
+      "article_type": ["Shirt"],
+      "base_colour": ["White"]
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": ["P0061", "P0062"]
+  },
+  {
+    "case_id": "P-06",
+    "query": "Do you have blue unisex sneakers?",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "gender": ["Unisex"],
+      "article_type": ["Sneakers"],
+      "base_colour": ["Blue"]
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": ["P0023", "P0024"]
+  },
+  {
+    "case_id": "P-07",
+    "query": "Give me summer T-shirts.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["T-shirt"],
+      "season": ["Summer"]
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "P-08",
+    "query": "Show formal dresses.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["Dress"],
+      "usage": ["Formal"]
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "P-09",
+    "query": "Find sneakers for sports.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["Sneakers"],
+      "usage": ["Sports"]
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "P-10",
+    "query": "Create a summer wedding look for a man.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "creative",
+    "expected_filters": {
+      "gender": ["Men"],
+      "season": ["Summer"],
+      "usage": ["Formal"]
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "P-11",
+    "query": "Create a black outfit for a woman.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "creative",
+    "expected_filters": {
+      "gender": ["Women"],
+      "base_colour": ["Black"]
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "P-12",
+    "query": "Give me three red T-shirts.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["T-shirt"],
+      "base_colour": ["Red"]
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": ["P0073", "P0074", "P0075", "P0076", "P0077", "P0078"]
+  },
+  {
+    "case_id": "P-13",
+    "query": "Show two blue dresses below $100.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["Dress"],
+      "base_colour": ["Blue"],
+      "max_price": 100
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": ["P0007", "P0008", "P0009", "P0010", "P0011", "P0012"]
+  },
+  {
+    "case_id": "P-14",
+    "query": "Show one white pair of sneakers.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["Sneakers"],
+      "base_colour": ["White"]
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": ["P0067", "P0068", "P0069", "P0070", "P0071", "P0072"]
+  },
+  {
+    "case_id": "P-15",
+    "query": "What about the blue ones?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Show red T-shirts."
+      }
+    ],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["T-shirt"],
+      "base_colour": ["Blue"]
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": ["P0001", "P0002", "P0003", "P0004", "P0005", "P0006"]
+  },
+  {
+    "case_id": "P-16",
+    "query": "Any cheaper options under $80?",
+    "history": [
+      {
+        "role": "user",
+        "content": "Show black dresses under $120."
+      }
+    ],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["Dress"],
+      "base_colour": ["Black"],
+      "max_price": 80
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": ["P0031", "P0033", "P0035"]
+  },
+  {
+    "case_id": "P-17",
+    "query": "Find a blue T-shirt under $10.",
+    "history": [],
+    "expected_route": "product",
+    "expected_nature": "technical",
+    "expected_filters": {
+      "article_type": ["T-shirt"],
+      "base_colour": ["Blue"],
+      "max_price": 10
+    },
+    "expected_faq_ids": [],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "U-01",
+    "query": "Write Python code for quicksort.",
+    "history": [],
+    "expected_route": "unsupported",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": [],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "U-02",
+    "query": "What is the weather in Tokyo?",
+    "history": [],
+    "expected_route": "unsupported",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": [],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "U-03",
+    "query": "Solve x squared minus one.",
+    "history": [],
+    "expected_route": "unsupported",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": [],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "U-04",
+    "query": "Diagnose my headache.",
+    "history": [],
+    "expected_route": "unsupported",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": [],
+    "expected_product_ids": []
+  },
+  {
+    "case_id": "U-05",
+    "query": "Plan a five-day trip to Paris.",
+    "history": [],
+    "expected_route": "unsupported",
+    "expected_nature": null,
+    "expected_filters": {},
+    "expected_faq_ids": [],
+    "expected_product_ids": []
+  }
+]

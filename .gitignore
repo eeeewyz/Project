@@ -1,0 +1,10 @@
+.DS_Store
+.env
+.models/
+.pytest_cache/
+.ruff_cache/
+__pycache__/
+*.py[cod]
+data/index/
+evaluation/results.json
+evaluation/results.md
