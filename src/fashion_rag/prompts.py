@@ -1,6 +1,11 @@
 """Prompt builders for the fashion RAG assistant."""
 
-from fashion_rag.schemas import ChatTurn
+from fashion_rag.schemas import (
+    ChatTurn,
+    ProductQuery,
+    RetrievalHit,
+    TaskNature,
+)
 
 
 def format_history(history: list[ChatTurn]) -> str:
@@ -59,3 +64,45 @@ Current query:
 {query}
 
 Return JSON only.'''
+
+
+def build_faq_answer_prompt(query: str, hits: list[RetrievalHit]) -> str:
+    """Build a grounded FAQ-generation prompt with explicit evidence IDs."""
+
+    context = "\n".join(
+        f"[{hit.record_id}] {hit.metadata['question']} — "
+        f"{hit.metadata['answer']}"
+        for hit in hits
+    )
+    return f"""Answer only from the FAQ context below.
+Cite the supporting FAQ ID in square brackets.
+If the context does not answer the question, say so.
+
+FAQ context:
+{context}
+
+Question: {query}"""
+
+
+def build_product_answer_prompt(
+    query: str,
+    product_query: ProductQuery,
+    hits: list[RetrievalHit],
+) -> str:
+    """Build a grounded catalog-generation prompt with explicit product IDs."""
+
+    context = "\n".join(f"[{hit.record_id}] {hit.text}" for hit in hits)
+    temperature_instruction = (
+        "Be concise and factual."
+        if product_query.nature is TaskNature.TECHNICAL
+        else "Create a coherent outfit while staying within the supplied catalog."
+    )
+    return f"""Answer only from the product context below.
+Mention every recommended product by its exact product ID.
+Recommend at most {product_query.requested_count} products.
+{temperature_instruction}
+
+Product context:
+{context}
+
+Question: {query}"""
